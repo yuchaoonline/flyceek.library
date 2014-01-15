@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10D2BE48-7D7C-4302-A067-796502D1692F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FindProperty.Lib</RootNamespace>
+    <AssemblyName>FindProperty.Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CentaAuthNetSDK, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\CentaAuthNetSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Centaline.CentaLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\Centaline.CentaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Commons, Version=0.4.2.8580, Culture=neutral, PublicKeyToken=44382d1b57473eda">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="EmitMapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Membase.2.14\lib\net35\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.0.1.29147, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.PolicyInjection">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\..\..\Dlls\上海中原网站\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=1.8.0.124, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.8.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.8.0.124, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mongocsharpdriver.1.8.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DLLS\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aop\Componet\CommonAopComponet.cs" />
+    <Compile Include="Aop\InjectionFoundation.cs" />
+    <Compile Include="Aop\Provider\PIAB\PolicyInjection.cs" />
+    <Compile Include="Aop\PolicyInjectionFactory.cs" />
+    <Compile Include="BLL\CentalineEst\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\CentalineEst\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\CentalineEst\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\CentalineEst\DALFactory\IoCDataAccessFactory.cs" />
+    <Compile Include="BLL\CentalineEst\DAL\Db\EstHeader.cs" />
+    <Compile Include="BLL\CentalineEst\DataContext\Db\CentalineEstContext.cs" />
+    <Compile Include="BLL\CentalineEst\Facade\EstHeader.cs" />
+    <Compile Include="BLL\CentalineEst\IDAL\IEstHeader.cs" />
+    <Compile Include="BLL\CentalineEst\ViewModel\EstHeader.cs" />
+    <Compile Include="BLL\Cms\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\Cms\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\Cms\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\Cms\DALFactory\IoCDataAccessFactory.cs" />
+    <Compile Include="BLL\Cms\DAL\Db\IcmArticle.cs" />
+    <Compile Include="BLL\Cms\DataContext\Db\CmsContext.cs" />
+    <Compile Include="BLL\Cms\Facade\IcmArticle.cs" />
+    <Compile Include="BLL\Cms\IDAL\IIcmArticle.cs" />
+    <Compile Include="BLL\Cms\Model\IcmArticle.cs" />
+    <Compile Include="BLL\Cms\Model\IcmArticleProp.cs" />
+    <Compile Include="BLL\Cms\ViewModel\IcmArticle.cs" />
+    <Compile Include="BLL\Cms\ViewModel\IcmArticleProp.cs" />
+    <Compile Include="BLL\Common\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\Common\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\Common\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\Common\DALFactory\IoCDataAccessFactory.cs" />
+    <Compile Include="BLL\Common\DALFactory\MDbDataAccessFactory.cs" />
+    <Compile Include="BLL\Common\DAL\Db\AgentPostSummary.cs" />
+    <Compile Include="BLL\Common\DAL\Db\Entrust.cs" />
+    <Compile Include="BLL\Common\DAL\Db\MatchHouseSearchKeyword.cs" />
+    <Compile Include="BLL\Common\DAL\Db\SearchAutoComplete.cs" />
+    <Compile Include="BLL\Common\DAL\Db\SearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\DAL\Db\SubStationCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Db\SubWayCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentHitCount.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentHouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentHouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentHouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentHouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentInfoSearchCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentListSearchCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\AgentListOrderCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\BarCode.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\CallAgent400.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HistoryPost.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseListStyle.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\MailComponet.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\PostHitCount.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\SearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\SearchTagCategoryCheck.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\AgentPostSummary.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\MatchHouseSearchKeyword.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\SearchAutoComplete.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\SearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\SubStationCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseRentOrderCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseSearchCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\SubStationCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\SubWayCriteria.cs" />
+    <Compile Include="BLL\Common\DAL\MDb\SubWayCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentHitCount.cs" />
+    <Compile Include="BLL\Common\Facade\AgentHouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentHouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentHouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentHouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentInfoSearchCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentListSearchCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentListOrderCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\AgentPostSummary.cs" />
+    <Compile Include="BLL\Common\Facade\BarCode.cs" />
+    <Compile Include="BLL\Common\Facade\CriteriaSummary.cs" />
+    <Compile Include="BLL\Common\Facade\Entrust.cs" />
+    <Compile Include="BLL\Common\Facade\HouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\CallAgent400.cs" />
+    <Compile Include="BLL\Common\Facade\HistoryPost.cs" />
+    <Compile Include="BLL\Common\Facade\HouseListStyle.cs" />
+    <Compile Include="BLL\Common\Facade\MailComponet.cs" />
+    <Compile Include="BLL\Common\Facade\MatchHouseSearchKeyword.cs" />
+    <Compile Include="BLL\Common\Facade\HouseOrderCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\HousePriceCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\HouseRentOrderCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\HouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\HouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\PostHitCount.cs" />
+    <Compile Include="BLL\Common\Facade\SearchAutoComplete.cs" />
+    <Compile Include="BLL\Common\Facade\HouseSearchCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\SearchCriteriaValidate.cs" />
+    <Compile Include="BLL\Common\Facade\SearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\Facade\SearchTagCategoryCheck.cs" />
+    <Compile Include="BLL\Common\Facade\HouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\SubStationCriteria.cs" />
+    <Compile Include="BLL\Common\Facade\SubWayCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentHitCount.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentHouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentHouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentHouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentHouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentInfoSearchCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentListSearchCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentListOrderCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IAgentPostSummary.cs" />
+    <Compile Include="BLL\Common\IDAL\IEntrust.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseBedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\ICallAgent400.cs" />
+    <Compile Include="BLL\Common\IDAL\IHistoryPost.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseListStyle.cs" />
+    <Compile Include="BLL\Common\IDAL\IMailComponent.cs" />
+    <Compile Include="BLL\Common\IDAL\IMatchHouseSearchKeyword.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseRentOrderCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseRentPriceCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseSalePriceCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseSearchCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\IPostHitCount.cs" />
+    <Compile Include="BLL\Common\IDAL\ISearchAutoComplete.cs" />
+    <Compile Include="BLL\Common\IDAL\ISearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\IDAL\ISearchTagCategoryCheck.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseSizeCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\ISubStationCriteria.cs" />
+    <Compile Include="BLL\Common\IDAL\ISubWayCriteria.cs" />
+    <Compile Include="BLL\Common\Model\AgentHitCount.cs" />
+    <Compile Include="BLL\Common\Model\Entrust.cs" />
+    <Compile Include="BLL\Common\Model\PostHitCount.cs" />
+    <Compile Include="BLL\Common\ViewModel\AgentPostSummary.cs" />
+    <Compile Include="BLL\Common\ViewModel\CallAgent400Result.cs" />
+    <Compile Include="BLL\Common\ViewModel\CriteriaSummary.cs" />
+    <Compile Include="BLL\Common\ViewModel\CommomSearchCriteria.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\DAL\Db\RetailStore.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\DataContext\Db\FindpropertyMainWebContext.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\Facade\RetailStore.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\IDAL\IRetailStore.cs" />
+    <Compile Include="BLL\FindpropertyMainWeb\ViewModel\RetailStore.cs" />
+    <Compile Include="BLL\Findproperty\DALFactory\MDbDataAccessFactory.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Agent.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Enquiry.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Agent.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\AppUpdate.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Branch.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Enquiry.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\EstScore.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Agent.cs" />
+    <Compile Include="BLL\Findproperty\Facade\AppUpdate.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Branch.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Enquiry.cs" />
+    <Compile Include="BLL\Findproperty\Facade\EstScore.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IAppUpdate.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IBranch.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IAgent.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IEnquiry.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IEstScore.cs" />
+    <Compile Include="BLL\Findproperty\Model\Enquiry.cs" />
+    <Compile Include="BLL\Findproperty\Model\RetailStore.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\PostDetail.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Branch.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\EstScore.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Agent.cs" />
+    <Compile Include="BLL\Common\ViewModel\AgentInfoSearchCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\AgentListSearchCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\CallAgent400.cs" />
+    <Compile Include="BLL\Common\ViewModel\HistoryPost.cs" />
+    <Compile Include="BLL\Common\ViewModel\HouseListStyle.cs" />
+    <Compile Include="BLL\Common\ViewModel\SearchRecommendTag.cs" />
+    <Compile Include="BLL\Common\ViewModel\Criteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\BedRoomCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\OrderCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\PriceCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\HouseSearchCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\SearchAutoComplete.cs" />
+    <Compile Include="BLL\Common\ViewModel\SizeCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\SubStationCriteria.cs" />
+    <Compile Include="BLL\Common\ViewModel\SubWayCriteria.cs" />
+    <Compile Include="BLL\Findproperty\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\Findproperty\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\Findproperty\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\Findproperty\DALFactory\IoCDataAccessFactory.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Cenest.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Gscp.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Post.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\PostImage.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\PostItem.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Region.cs" />
+    <Compile Include="BLL\Findproperty\DAL\Db\Scp.cs" />
+    <Compile Include="BLL\Common\DAL\Manual\HouseSaleOrderCriteria.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Cenest.cs" />
+    <Compile Include="BLL\Common\IDAL\IBarCode.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\ICenest.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\AgentScore.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Cenest.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Enquiry.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\EstInfo.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\PostImage.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\PostItem.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\PostState.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DALFactory\MDbDataAccessFactory.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\Db\TagAgent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\Db\TagArea.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\MDb\TagAgent.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\MDb\TagArea.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\Db\TagGscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\Db\TagMkt.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Gscp.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Post.cs" />
+    <Compile Include="BLL\Findproperty\DAL\MDb\Region.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\MDb\TagGscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\MDb\TagMkt.cs" />
+    <Compile Include="BLL\Findproperty\DataContext\Db\FindPropertyContext.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Gscp.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Post.cs" />
+    <Compile Include="BLL\Findproperty\Facade\PostImage.cs" />
+    <Compile Include="BLL\Findproperty\Facade\PostItem.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Region.cs" />
+    <Compile Include="BLL\Findproperty\Facade\Scp.cs" />
+    <Compile Include="BLL\Common\Facade\HouseSaleOrderCriteria.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\Facade\TagAgent.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\Facade\TagArea.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\Facade\TagGscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\Facade\TagMkt.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IGscp.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IPostImage.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IPostItem.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IRegion.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IScp.cs" />
+    <Compile Include="BLL\Common\IDAL\IHouseSaleOrderCriteria.cs" />
+    <Compile Include="BLL\Findproperty\IDAL\IPost.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\IDAL\ITagAgent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\SHTagToSalesBlog\IDAL\ITagArea.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\IDAL\ITagGscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\IDAL\ITagMkt.cs" />
+    <Compile Include="BLL\Findproperty\Model\Post.cs" />
+    <Compile Include="BLL\Findproperty\Model\PostImage.cs" />
+    <Compile Include="BLL\Findproperty\Model\PostItem.cs" />
+    <Compile Include="BLL\Findproperty\Model\Region.cs" />
+    <Compile Include="BLL\Findproperty\Model\Scp.cs" />
+    <Compile Include="BLL\Findproperty\Model\TagSearchGscp.cs" />
+    <Compile Include="BLL\Findproperty\Model\TagSearchMkt.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Gscp.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Post.cs" />
+    <Compile Include="BLL\Findproperty\ViewModel\Region.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\ViewModel\TagAgent.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\ViewModel\TagArea.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\ViewModel\TagGscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\ViewModel\TagMkt.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\Db\TagMain.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DAL\MDb\TagMain.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\Facade\TagMain.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\IDAL\ITagMain.cs" />
+    <Compile Include="BLL\Common\ViewModel\MatchHouseSearchKeyword.cs" />
+    <Compile Include="BLL\Findproperty\Model\Gscp.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DALFactory\DataAccessFactoryCreator.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DALFactory\DbDataAccessFactory.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DALFactory\IDataAccessFactory.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DALFactory\IoCDataAccessFactory.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\DataContext\Db\SHTagToSalesBlogContext.cs" />
+    <Compile Include="BLL\SHTagToSalesBlog\ViewModel\TagMain.cs" />
+    <Compile Include="Cache\Component\CacheComponetFundation.cs" />
+    <Compile Include="Cache\Component\ListResultCacheComponet.cs" />
+    <Compile Include="Cache\Component\SingleResultCacheComponet.cs" />
+    <Compile Include="Cache\Component\CacheKeyCreator\MethodCacheKeyCreator.cs" />
+    <Compile Include="Cache\Component\ResultExaminer\CollectionResultExaminer.cs" />
+    <Compile Include="Cache\Component\CacheKeyCreator\ICacheKeyCreator.cs" />
+    <Compile Include="Cache\Component\ResultExaminer\IntegerResultExaminer.cs" />
+    <Compile Include="Cache\Component\ResultExaminer\IntelligentResultExaminer.cs" />
+    <Compile Include="Cache\Component\ResultExaminer\IResultExaminer.cs" />
+    <Compile Include="Cache\Component\ResultExaminer\StringResultExaminer.cs" />
+    <Compile Include="Cache\Provider\CacheFactory.cs" />
+    <Compile Include="Cache\Provider\ICache.cs" />
+    <Compile Include="Cache\Provider\HttpCache.cs" />
+    <Compile Include="Cache\Provider\MemBaseCache.cs" />
+    <Compile Include="Common\ConfigInfo.cs" />
+    <Compile Include="Common\ConstValue.cs" />
+    <Compile Include="Common\DisposableBase.cs" />
+    <Compile Include="Common\GZIPCommon.cs" />
+    <Compile Include="Common\LinkHelper.cs" />
+    <Compile Include="Common\MapCommon.cs" />
+    <Compile Include="Common\MethodCommon.cs" />
+    <Compile Include="Common\PagerInfo.cs" />
+    <Compile Include="Common\PathHelper.cs" />
+    <Compile Include="Common\StringFormat.cs" />
+    <Compile Include="Common\ValueConvert\DataTableToModeList.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IDataTableToModelListConverter.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IObjectConverter.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueConverter.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueConveterFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\ValueConvert\Interface\IValueConveterFactoryWeakType.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToBoolean.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToDateTime.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToDecimal.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToDouble.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToGuid.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToInt.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToLong.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToNullableDateTime.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToNullableDecimal.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToNullableDouble.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToNullableInt.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToNullableLong.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToObject.cs" />
+    <Compile Include="Common\ValueConvert\Interface\IValueToString.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringConvertFactoryWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToBooleanWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDateTime.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDateTimeWeadType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDecimalWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDouble.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDoubleWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToGuidWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToIntWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToLong.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToLongWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDateTime.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDateTimeWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDecimal.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDecimalWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDouble.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableDoubleWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableInt.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableIntWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableLong.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringConvertFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\ValueConvert\StringConverter\StringToBoolean.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToDecimal.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToGuid.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToInt.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToNullableLongWeakType.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToString.cs" />
+    <Compile Include="Common\ValueConvert\StringConverter\StringToStringWeakType.cs" />
+    <Compile Include="Common\ValueConvert\ValueConverter.cs" />
+    <Compile Include="Common\ValueConvert\ValueConverterCreator.cs" />
+    <Compile Include="Common\ValueConvert\ValueConverterFactoryCreator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\WebCommon.cs" />
+    <Compile Include="Common\Base64UrlComponent.cs" />
+    <Compile Include="DataSourceUtility\Mongo\IMongoConnctionArbitrate.cs" />
+    <Compile Include="DataSourceUtility\Mongo\IMongoDbSignal.cs" />
+    <Compile Include="DataSourceUtility\Mongo\MongoConnctionArbitrate.cs" />
+    <Compile Include="DataSourceUtility\Mongo\MongoConnctionArbitrateFactory.cs" />
+    <Compile Include="DataSourceUtility\Mongo\MongoDbCachedSignal.cs" />
+    <Compile Include="DataSourceUtility\Mongo\MongoDbSignalValue.cs" />
+    <Compile Include="DataSourceUtility\Mongo\Official\MongoContext.cs" />
+    <Compile Include="Dto\DTOManager.cs" />
+    <Compile Include="Dto\EmitMapperFacade.cs" />
+    <Compile Include="Dto\IObjectMapperManager.cs" />
+    <Compile Include="Dto\IObjectMapperManagerFactory.cs" />
+    <Compile Include="Dto\ObjectMapperManagerFactory.cs" />
+    <Compile Include="DataSourceUtility\DbContextFactory.cs" />
+    <Compile Include="Ioc\IoCComponentFactoryBase.cs" />
+    <Compile Include="Ioc\IIoCComponent.cs" />
+    <Compile Include="Ioc\IIoCComponentFactory.cs" />
+    <Compile Include="Ioc\IIoCContext.cs" />
+    <Compile Include="Ioc\IIoCCreator.cs" />
+    <Compile Include="Ioc\IoCControllerFactory.cs" />
+    <Compile Include="Ioc\IoCManager.cs" />
+    <Compile Include="Ioc\ControllerFactoryCreator.cs" />
+    <Compile Include="Ioc\Unity\InterceptionExtension.cs" />
+    <Compile Include="Ioc\Unity\InterceptionStrategy.cs" />
+    <Compile Include="Ioc\Unity\UnityContext.cs" />
+    <Compile Include="Ioc\Unity\UnityCreator.cs" />
+    <Compile Include="Ioc\Unity\UnityComponent.cs" />
+    <Compile Include="Ioc\Unity\UnityDependencyResolver.cs" />
+    <Compile Include="Json\JsonSerializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\CentalineEst\Model\" />
+    <Folder Include="BLL\FindpropertyMainWeb\Model\" />
+    <Folder Include="BLL\SHTagToSalesBlog\Model\" />
+    <Folder Include="Exception\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

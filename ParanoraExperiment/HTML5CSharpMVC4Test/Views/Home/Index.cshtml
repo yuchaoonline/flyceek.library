@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "主页";
+}
+<script src="@Url.Content("~/script/cordova-2.4.0.js")"></script>
+<h2>@ViewBag.Message</h2>
+<p>
+    若要了解有关 ASP.NET MVC 的详细信息，请访问 <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>。
+</p>
+
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">导航</li>
+    <li>@Html.ActionLink("关于", "About", "Home")</li>
+    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+</ul>
+<hr />
+<nav>
+<h3>HTML5 Test</h3>
+</nav>
+<hr />
+<canvas id="myCanvas" width="100" height="100"></canvas>
+@using (Html.BeginForm()) {
+    
+<script type="text/javascript">    
+    function doSubmit() {
+
+        var input = document.getElementById("input1").value;
+        
+        window.postMessage("i am come","http://www.test.com");
+
+
+        return false;
+    }
+
+    function canvasTest() {
+        try{
+            var c = document.getElementById("myCanvas");
+            var dc = c.getContext("2d");
+            dc.translate(10, 10);
+            dc.fillStyle = "#FF0000";
+            dc.fillRect(0, 0, 50, 50);
+        }
+        catch (e) {
+            alert(e);
+        }
+    }
+
+    
+    function geolocationTest(){
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var o = document.getElementById("geolocationInfo");
+            var coords = position.coords;
+            var positionString="经度: "+coords.longitude+"<br>";
+            positionString+="维度: "+coords.latitude+"<br>";
+            var altitude=coords.altitude;
+            if( altitude!=null){
+                positionString+="海拔高度"+coords.altitude+"<br>";
+            }
+            o.innerHTML = positionString;
+        },
+        function (error) {
+            alert(error);
+        }, null);        
+    }
+
+    function postMessageTeset() {
+        window.self.addEventListener("message", function (e) {
+            switch (e.origin) {
+                case "www.test.com.cn":
+                    alert(e.data);
+                    break;
+            }
+        }, true);
+    }
+
+    function xmlHttpRequestTest() {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "http://openapi.agentsh.soufun.com/Agent/UserAuthentication?companyId=10010&userName=jamesruan2008&pwd=123456", true);
+        
+        xmlHttp.onload = function (e) {
+            alert(e.currentTarget.responseText);
+        }
+
+        xmlHttp.onprogress = function (e) {
+            var total = e.total;
+            var loaded = e.loa;
+            
+            if (e.lengthComputable) {
+                alert(total + ":" + loaded);
+            }
+        }
+
+        
+        xmlHttp.send("");
+    }
+
+    function webSocketTest() {
+        var socket = new WebSocket("ws://127.0.0.1:8899");
+        
+        socket.onopen = function (e) {
+            socket.send('I am the client and I\'m listening!');
+
+            socket.onmessage = function (event) {
+                alert(event.data);
+            };
+
+            socket.onclose = function (event) {
+                alert("close");
+            };
+            socket.close();
+        }
+    }    
+
+    function onDeviceReady() {
+        // Now safe to use the Cordova API
+
+        alert("phonegap loaded");
+    }
+
+
+    function pageLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        canvasTest();
+        //geolocationTest();
+        //postMessageTeset();
+        //xmlHttpRequestTest();
+        //webSocketTest();
+    }
+
+    window.addEventListener("load", pageLoad,true);
+
+</script>
+<div id="geolocationInfo"></div>
+<input type="datetime" value="" id="input1" name="input1"/>
+<input id="myCar" type="text" list="cars" name="myCar" />
+<datalist id="cars">
+    <option value="BMW" label="BMW"/>
+    <option value="Ford" label="Ford"/>
+    <option value="Volvo" label="Volvo"/>
+</datalist>
+
+<hr />
+<input type="button" value="测试" onclick="return doSubmit();" />
+}

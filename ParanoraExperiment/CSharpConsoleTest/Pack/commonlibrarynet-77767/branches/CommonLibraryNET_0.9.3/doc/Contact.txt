@@ -1,0 +1,6 @@
+Author: Kishore Reddy
+Contact: kishore.pr4@gmail.com
+Projects: 
+	- CommonLibrary.NET
+	- CommonLibrary.NET WebModules 
+	- CodeHelix.NET

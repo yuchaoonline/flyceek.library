@@ -1,0 +1,81 @@
+﻿@model LuceneNetMvcAppTest.ViewModels.PropertyLuceneSearch
+@{
+    ViewBag.Title = "LuceneSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    LuceneNetMvcAppTest.Lib.Common.PagerInfo pagerInfo = Model.PagerInfo;
+    int showPageCount = 20;
+    int startPageIndex = pagerInfo.CurrentPageIndex - (showPageCount / 2);
+    if (startPageIndex + showPageCount > pagerInfo.TotalPageCount)
+    {
+        startPageIndex = pagerInfo.TotalPageCount + 1 - showPageCount;
+    }
+    if (startPageIndex < 1)
+    {
+        startPageIndex = 1;
+    }
+    int endPageIndex = startPageIndex + showPageCount - 1;
+    if (endPageIndex > pagerInfo.TotalPageCount)
+    {
+        endPageIndex = pagerInfo.TotalPageCount;
+    }
+}
+@section Scripts{
+    <script>
+        function doSearch(index) {
+            window.location.href = "LuceneSearch?k=" +escape($("#k").val()) + "&p=" + index;
+        }
+    </script>
+}
+<h2>Post Index Search</h2>
+<div>
+    <input type="text" id="k" name="k" value="@Model.KeyWord"/><input type="button" value="搜索" onclick="doSearch(1);"/>耗时（@(Model.SearchTimeConsuming)毫秒）共(@(Model.PagerInfo.TotalItemCount))条记录 第@(Model.PagerInfo.CurrentPageIndex)/@(Model.PagerInfo.TotalPageCount)页
+</div>
+<table border="1">
+    <tr>
+        <td>序号</td>
+        <td>编号</td>
+        <td>描述</td>
+    </tr>
+    @foreach(var p in Model.PropertyLuceneIndexDocuments)
+    {
+    <tr>
+        <td>@p.Index</td>
+        <td><a href="http://sh.centanet.com/findproperty/view/@(p.Id)" target="_blank">@p.Id</a></td>
+        <td>@Html.Raw(p.Info)</td>
+    </tr>
+    }
+</table>
+<div class="page">
+@if (pagerInfo.TotalItemCount > pagerInfo.PageSize)
+{
+    <span class="number">
+    @if (pagerInfo.CurrentPageIndex > 1)
+    {
+        <a href="javascript:doSearch(1)">首页</a>
+        <a href="javascript:doSearch(@(pagerInfo.CurrentPageIndex - 1));"  class="Previous"><i></i>上一页</a>
+    }
+    @for (var i = startPageIndex; i <= endPageIndex; i++)
+    {
+        if (pagerInfo.CurrentPageIndex == i)
+        {
+            <span>@i</span>
+        }
+        else
+        {
+            <a href="javascript:void(0)" onclick="doSearch(@i)">@i</a>
+        }
+    }
+    @if (endPageIndex < pagerInfo.TotalPageCount)
+    {
+        @Html.Raw("...");
+    }
+    @if (pagerInfo.TotalPageCount > pagerInfo.CurrentPageIndex)
+    {
+        <a href="javascript:doSearch(@(pagerInfo.CurrentPageIndex + 1));"  class="next">下一页<i></i></a>
+        <a href="javascript:doSearch(@pagerInfo.TotalPageCount)">未页</a>
+    }
+    </span>
+    <span class="info">共<span>@pagerInfo.TotalPageCount</span>页</span>
+}
+</div>

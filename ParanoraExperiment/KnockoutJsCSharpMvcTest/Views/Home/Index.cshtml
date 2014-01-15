@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<ul data-bind="template:{name:'displayMode',foreach:availableMeals}"></ul> 
+<hr />分隔
+<ul data-bind="foreach:employees">
+    <ol>
+    <li><span data-bind="text:name"></span></li>
+    <li><span data-bind="text:active"></span></li></ol>
+</ul> 
+<hr />
+<span data-bind="text:priceRating"></span>
+<br />
+<div data-bind="visible: shouldShowMessage">
+    You will see this message only when "shouldShowMessage" holds a true value.
+</div>
+<span data-bind="text:helloWorld"></span>
+<select data-bind="options: availableMeals,optionsText: 'mealName',value:chosenMeal"></select>
+<hr />
+<p>
+    You've chosen:
+    <b data-bind="text: chosenMeal().description"></b>
+    (price: <span data-bind='text: chosenMeal().extraCost'></span>)
+</p>
+<script type="text/html" id="displayMode">
+    <ol><li><span data-bind="text:mealName"></span><span data-bind="text:description"></span></li></ol>
+</script>
+<script type="text/javascript">    
+    $(document).ready(function () {
+        var viewModel = {
+            helloWorld: 'Hello World !!',
+            price: ko.observable(344.95),
+            shouldShowMessage: ko.observable(true),
+            availableMeals: [
+                @for(var i=0;i<10;i++)
+                {
+                    @Html.Raw("{ mealName: 'Standard', description: 'Dry crusts of bread', extraCost: 1 },");
+                }
+            ],
+            employees: ko.observableArray([
+                { name: "Kari", active: ko.observable(true) },
+                { name: "Brynn", active: ko.observable(false) },
+                { name: "Nora", active: ko.observable(false) }
+            ])
+        };
+
+        viewModel.chosenMeal = ko.observable(viewModel.availableMeals);
+
+        // ... then later ...
+        //viewModel.employees()[1].active(true);
+        // Now "Brynn" is also rendered using the "active" template.
+
+        viewModel.priceRating = ko.dependentObservable(function () {
+            return this.price() > 50 ? "expensive" : "affordable";
+        }, viewModel);
+
+        ko.applyBindings(viewModel);
+
+        //viewModel.shouldShowMessage(false); // ... now it's hidden
+        //viewModel.shouldShowMessage(true); // ... now it's visible again
+    });
+</script>

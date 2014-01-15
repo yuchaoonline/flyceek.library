@@ -1,0 +1,1 @@
+mongod.exe --logpath D:\mongodb\log\MongoDB.log --dbpath D:\mongodb\data --service --master --oplogSize 64 --port 29102 
